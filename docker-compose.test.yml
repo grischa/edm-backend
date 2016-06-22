@@ -7,6 +7,7 @@ services:
   web:
     build: .
     # working_dir: /code
+    image: web
     command: bash test.sh
     # volumes:
     #   - .:/code
@@ -16,3 +17,17 @@ services:
       - db
     links:
       - db
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile-test
+    depends_on:
+      - web
+    links:
+      - db
+    volumes:
+      - ./config:/code/config
+      - ./lib:/code/lib
+      - ./priv:/code/priv
+      - ./test:/code/test
+      - ./web:/code/web

@@ -1,0 +1,9 @@
+FROM web
+ENV MIX_ENV=test
+RUN mix compile
+VOLUME /code/config
+VOLUME /code/lib
+VOLUME /code/priv
+VOLUME /code/test
+VOLUME /code/web
+CMD mix test --cover
