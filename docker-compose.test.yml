@@ -23,6 +23,7 @@ services:
       dockerfile: Dockerfile-test
     depends_on:
       - web
+      - db
     links:
       - db
     volumes:
